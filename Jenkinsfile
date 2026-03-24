@@ -2,17 +2,17 @@ pipeline {
     agent any
 
     environment {
-        GIT_REPO        = "https://github.com/veeravenkateswararao/react.git"
+        GIT_REPO        = "https://github.com/sivavvasamshetti-afk/react.git"
         GIT_BRANCH      = "main"
 
-        DOCKERHUB_USER  = "venkyveera"
+        DOCKERHUB_USER  = "sivav2516"
         IMAGE_NAME      = "react-app"
         IMAGE_TAG       = "${BUILD_NUMBER}"
 
-        DOCKER_CREDS    = "Docker_CRED"
+        DOCKER_CREDS    = "Docker_cred"
 
         CONTAINER_NAME  = "react-container"
-        HOST_PORT       = "9676"
+        HOST_PORT       = "8855"
         CONTAINER_PORT  = "80"
     }
 
@@ -23,7 +23,7 @@ pipeline {
                 checkout scmGit(
                     branches: [[name: "*/${GIT_BRANCH}"]],
                     userRemoteConfigs: [[
-                        credentialsId: 'venkygit',
+                        credentialsId: 'shivagit',
                         url: "${GIT_REPO}"
                     ]]
                 )
