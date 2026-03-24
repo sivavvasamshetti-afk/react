@@ -36,7 +36,7 @@ function App() {
         <section id="bouquets" className="fs-section">
           <div className="fs-section__header">
             <h3>Featured bouquets</h3>
-            <p>Hand-picked favorites from Venky&apos;s Flower Studio.</p>
+            <p>Hand-picked favorites from Shiva&apos;s Flower Studio.</p>
           </div>
           <div className="fs-grid">
             <article className="fs-card">
@@ -124,7 +124,7 @@ function App() {
               <p>
                 Phone: +91-90000-00000
                 <br />
-                Email: hello@venkysflowershop.com
+                Email: hello@shivasflowershop.com
               </p>
             </div>
             <div>
@@ -137,7 +137,7 @@ function App() {
             </div>
           </div>
           <p className="fs-footer__bottom">
-            © {new Date().getFullYear()} Venky&apos;s Flower Studio. All rights reserved.
+            © {new Date().getFullYear()} Shiva&apos;s Flower Studio. All rights reserved.
           </p>
         </section>
       </main>
