@@ -17,7 +17,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout Code') {
             steps {
                 checkout scmGit(
@@ -45,7 +44,6 @@ pipeline {
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-
                     sh """
                     echo \$DOCKER_PASS | docker login -u \$DOCKER_USER --password-stdin
                     """
@@ -73,6 +71,23 @@ pipeline {
                 ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}
                 """
             }
+        }
+    }
+
+    post {
+        success {
+            emailext(
+                subject: "SUCCESS: Build #${BUILD_NUMBER} for ${IMAGE_NAME}",
+                body: "Good news!\n\nThe Jenkins pipeline completed successfully.\n\nImage: ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}\nContainer: ${CONTAINER_NAME}\nPort: ${HOST_PORT}\n\nRegards,\nJenkins",
+                to: "siva.vasamshetti@gamil.com"
+            )
+        }
+        failure {
+            emailext(
+                subject: "FAILURE: Build #${BUILD_NUMBER} for ${IMAGE_NAME}",
+                body: "Unfortunately, the Jenkins pipeline failed.\n\nPlease check the Jenkins console logs for details.\n\nRegards,\nJenkins",
+                to: "siva.vasamshetti@gamil.com"
+            )
         }
     }
 }
